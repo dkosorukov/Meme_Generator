@@ -1,3 +1,4 @@
+"""DOCX file parser class."""
 from typing import List
 import docx
 
@@ -6,14 +7,13 @@ from .QuoteModel import QuoteModel
 
 
 class DOCXIngestor(IngestorInterface):
-    """ Class parsing .DOCX file and creating
-    a list of QuoteModel class instances
-    """
+    """Class to parse .DOCX file and create a list of QuoteModel class."""
+
     allowed_extensions = ['docx']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
-        """ Parse .DOCX file and create a list of QuoteModel classes
+        """Parse .DOCX file and create a list of QuoteModel classes.
 
         : param path: location of a file to parse
         : return: list of QuoteModel classes

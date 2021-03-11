@@ -1,3 +1,4 @@
+"""CSV file parser class."""
 from typing import List
 import pandas
 
@@ -6,14 +7,13 @@ from .QuoteModel import QuoteModel
 
 
 class CSVIngestor(IngestorInterface):
-    """ Class parsing .CSV file and creating
-    a list of QuoteModel class instances
-    """
+    """Class to parse .CSV file and create a list of QuoteModel class."""
+
     allowed_extensions = ['csv']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
-        """ Parse .CSV file and create a list of QuoteModel classes
+        """Parse .CSV file and create a list of QuoteModel classes.
 
         : param path: location of a file to parse
         : return: list of QuoteModel classes

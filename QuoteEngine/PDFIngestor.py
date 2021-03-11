@@ -1,3 +1,4 @@
+"""PDF file parser class."""
 from typing import List
 import subprocess
 import os
@@ -8,18 +9,17 @@ from .QuoteModel import QuoteModel
 
 
 class PDFIngestor(IngestorInterface):
-    """ Class parsing .PDF file and creating
-    a list of QuoteModel class instances
-    """
+    """Class to parse .PDF file and create a list of QuoteModel class."""
+
     allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
-        """ Parse .PDF file and create a list of QuoteModel classes
+        """Parse .PDF file and create a list of QuoteModel classes.
 
-       : param path: location of a file to parse
-       : return: list of QuoteModel classes
-       """
+        : param path: location of a file to parse
+        : return: list of QuoteModel classes
+        """
         if not cls.can_ingest(path):
             raise Exception("Cannot ingest file extension exception")
 
@@ -38,4 +38,5 @@ class PDFIngestor(IngestorInterface):
                 quotes.append(new_quote)
         file_ref.close()
         os.remove(tmp)
+
         return quotes

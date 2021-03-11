@@ -1,3 +1,4 @@
+"""TXT file parser class."""
 from typing import List
 import subprocess
 import os
@@ -8,18 +9,17 @@ from .QuoteModel import QuoteModel
 
 
 class TXTIngestor(IngestorInterface):
-    """ Class parsing .TXT file and creating
-    a list of QuoteModel class instances
-    """
+    """Class to parse .TXT file and create a list of QuoteModel class."""
+
     allowed_extensions = ['txt']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
-        """ Parse .TXX file and create a list of QuoteModel classes
+        """Parse .TXX file and create a list of QuoteModel classes.
 
-       : param path: location of a file to parse
-       : return: list of QuoteModel classes
-       """
+        : param path: location of a file to parse
+        : return: list of QuoteModel classes
+        """
         if not cls.can_ingest(path):
             raise Exception("Cannot ingest file extension exception")
 
