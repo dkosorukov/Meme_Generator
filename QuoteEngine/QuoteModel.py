@@ -4,4 +4,4 @@ class QuoteModel():
         self.meme_author = meme_author
     
     def __repr__(self):
-        return f'{self.meme_body} - {self.meme_author}'
+        return f'"{self.meme_body}" - {self.meme_author}'
