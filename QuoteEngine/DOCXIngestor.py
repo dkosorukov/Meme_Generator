@@ -24,9 +24,11 @@ class DOCXIngestor(IngestorInterface):
         quotes = []
         doc = docx.Document(path)
 
+        # Iterate through each line
         for para in doc.paragraphs:
             if para.text != "":
-                parse = para.text.split('-').strip()
+                # Split in two and strip "" marks
+                parse = [aa.strip().strip('"') for aa in para.text.split('-')]
                 new_quote = QuoteModel(parse[0], parse[1])
                 quotes.append(new_quote)
 

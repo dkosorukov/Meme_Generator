@@ -23,20 +23,26 @@ class PDFIngestor(IngestorInterface):
         if not cls.can_ingest(path):
             raise Exception("Cannot ingest file extension exception")
 
+        # Path to pdftotext.exe to be called via subprocess module
         pdftotext = r'C:\Program Files\Git\mingw64\bin\pdftotext.exe'
-        tmp = f'./tmp/{random.randint(0,10**6)}.txt'
-        call = subprocess.run([pdftotext, '-layout', path, tmp])
+        # Create temporary file
+        tmp = f'./temp/{random.randint(0,10**6)}.txt'
+        # Call pdftotext.exe to read content and write to txt file
+        subprocess.run([pdftotext, '-layout', path, tmp])
 
         file_ref = open(tmp, 'r')
         quotes = []
 
+        # Iterate through each line in txt file
         for line in file_ref.readlines():
             line = line.strip('\n\r').strip()
             if len(line) > 0:
-                parse = line.split('-').strip()
+                # Split in two and strip "" marks
+                parse = [aa.strip().strip('"') for aa in line.split('-')]
                 new_quote = QuoteModel(parse[0], parse[1])
                 quotes.append(new_quote)
         file_ref.close()
+        # Delete temporary txt file
         os.remove(tmp)
 
         return quotes
