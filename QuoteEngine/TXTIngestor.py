@@ -17,8 +17,10 @@ class TXTIngestor(IngestorInterface):
     def parse(cls, path: str) -> List[QuoteModel]:
         """Parse .TXX file and create a list of QuoteModel classes.
 
-        : param path: location of a file to parse
-        : return: list of QuoteModel classes
+        Arguments:
+            path {str} -- location of a file to parse
+        Returns:
+            list -- collection of QuoteModel classes
         """
         if not cls.can_ingest(path):
             raise Exception("Cannot ingest file extension exception")
