@@ -10,7 +10,7 @@ from QuoteEngine import QuoteModel
 
 
 def generate_meme(path=None, body=None, author=None) -> str:
-    """.Generate a meme given an path and a quote.
+    """Generate a meme given an path and a quote.
     
     Arguments:
         path {str} -- path to image file

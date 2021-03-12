@@ -51,10 +51,34 @@ class MemeEngine():
             frame_margin = max(10, int(fnt_size / 4))
             # Keep horizontal position fixed at the no text frame
             caption_x = frame_margin
-            # Texbox size
-            x1, y1, x2, y2 = draw.multiline_textbbox((0, 0),
+            # Texbox size for unfolded text
+            x1, y1, x2, y2 = draw.multiline_textbbox(
+                                                     (0, 0),
                                                      f'"{text}"\n-{author}',
-                                                     font=fnt)
+                                                     font=fnt
+                                                     )
+            # Number of lines to split text into
+            n_lines = int((x2 - x1) / width) + ((x2 - x1) % width > 0)
+            # Split text into multiple lines
+            if n_lines > 1:
+                string_length = len(text)
+                txt_lines = ['']
+                ii = 0
+                for word in text.split():
+                    if len(txt_lines[ii] + ' ' + word) < string_length/n_lines:
+                        txt_lines[ii] += word + ' '
+                    else:
+                        txt_lines.append(word + ' ')
+                        ii += 1
+                n_lines = len(txt_lines)
+                text = "\n".join(txt_lines)
+                # Update now a multi line text box size
+                _, y1, _, y2 = draw.multiline_textbbox(
+                                                       (0, 0),
+                                                       f'"{text}"\n-{author}',
+                                                       font=fnt
+                                                       )
+
             # Random vertical position of the text box
             caption_y = random.randint(frame_margin,
                                        height - frame_margin - (y2 - y1))
