@@ -1,3 +1,5 @@
+"""Interface module for meme egnerator."""
+
 import os
 import random
 import argparse
@@ -6,8 +8,17 @@ from QuoteEngine import Ingestor
 from MemeGenerator import MemeEngine
 from QuoteEngine import QuoteModel
 
-def generate_meme(path=None, body=None, author=None):
-    """ Generate a meme given an path and a quote """
+
+def generate_meme(path=None, body=None, author=None) -> str:
+    """.Generate a meme given an path and a quote.
+    
+    Arguments:
+        path {str} -- path to image file
+        body {str} -- caption text
+        author {str} -- caption author
+    Returns:
+        path {str} -- path to generated meme image file
+    """
     img = None
     quote = None
 
