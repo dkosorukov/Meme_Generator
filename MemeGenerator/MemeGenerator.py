@@ -6,7 +6,7 @@ import random
 class MemeEngine():
     """Class to manipulate image and draw caption onto image."""
 
-    def __init__(self, img_out_path='./meme'):
+    def __init__(self, img_out_path='./tmp'):
         """Create instance of class.
 
         Arguments:

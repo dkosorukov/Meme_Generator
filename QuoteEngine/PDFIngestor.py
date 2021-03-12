@@ -28,7 +28,7 @@ class PDFIngestor(IngestorInterface):
         # Path to pdftotext.exe to be called via subprocess module
         pdftotext = r'C:\Program Files\Git\mingw64\bin\pdftotext.exe'
         # Create temporary file
-        tmp = f'./temp/{random.randint(0,10**6)}.txt'
+        tmp = f'./tmp/{random.randint(0,10**6)}.txt'
         # Call pdftotext.exe to read content and write to txt file
         subprocess.run([pdftotext, '-layout', path, tmp])
 
