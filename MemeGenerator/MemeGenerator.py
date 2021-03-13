@@ -29,7 +29,11 @@ class MemeEngine():
         file_ext = img_path.split('.')[-1]
 
         # Load image
-        img = Image.open(img_path)
+        try:
+            img = Image.open(img_path)
+        except Exception as exception_name:
+            print('Exception raised: ', exception_name)
+
         # Resize image so the width is at most 500px and the height\
         # is scaled proportionally
         width, height = img.size

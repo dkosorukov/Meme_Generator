@@ -1,2 +1,4 @@
 run.py
 tmp/
+venv/
+static/

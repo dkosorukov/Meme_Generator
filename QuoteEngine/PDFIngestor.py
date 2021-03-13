@@ -25,8 +25,6 @@ class PDFIngestor(IngestorInterface):
         if not cls.can_ingest(path):
             raise Exception("Cannot ingest file extension exception")
 
-        # Path to pdftotext.exe to be called via subprocess module
-        pdftotext = r'C:\Program Files\Git\mingw64\bin\pdftotext.exe'
         # Create temporary file
         tmp = f'./tmp/{random.randint(0,10**6)}.txt'
         # Call pdftotext.exe to read content and write to txt file
